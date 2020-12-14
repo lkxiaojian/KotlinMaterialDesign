@@ -5,14 +5,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+    <!--
+   1. menu 是引用的菜单栏
+
+    <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/page_1"
+        android:enabled="true"
+        android:icon="@android:drawable/btn_dialog"
+        android:title="@string/text_label_1"/>
+    </menu>
+
+
+   2. labelVisibilityMode 有四种种属性 labeled selected unlabeled auto
+    labeled 带title 一直显示(就是 item中的 android:title="@string/text_label_1")
+    selected 选中 的带title 其它的title 隐藏 切换有个简单的动画
+    unlabeled 不带title 一直不显示
+    auto 自动 默认为labeled （不确认）
+
+    3 itemTextColor 字体选中和未选中后的颜色
+    4 itemIconTint 图片选中和未选中后的颜色
+
+    5 itemRippleColor 点击的时候水波纹颜色
+
+    -->
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?android:attr/windowBackground"
+        app:itemIconTint="@color/color_state_menu_navi"
+        app:itemTextColor="@color/color_state_menu_navi"
+        app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/bottom_navigation_menu"
         />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
