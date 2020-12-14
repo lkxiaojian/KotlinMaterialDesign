@@ -5,6 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+
+
+    <FrameLayout
+        android:id="@+id/frame_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="8dp"
+        android:layout_above="@id/bottom_navigation"
+        />
+
     <!--
    1. menu 是引用的菜单栏
 
