@@ -10,7 +10,9 @@ import com.example.kotlinmaterialdesign.fragment.Page1Fragment
 import com.example.kotlinmaterialdesign.fragment.Page2Fragment
 import com.example.kotlinmaterialdesign.fragment.Page3Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationItemView
+import com.google.android.material.bottomnavigation.BottomNavigationMenu
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.im_badge.*
 
@@ -22,7 +24,21 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_main)
+        //绕过md 限制5个菜单兰的限制 （未成功）
+//        val menuField =  Class.forName("com.google.android.material.bottomnavigation.BottomNavigationView").getDeclaredField("menu")
+//        menuField.isAccessible=true
+//        val menuSys = menuField.get(bottom_navigation)
+//
+//        val forName =
+//            Class.forName("com.google.android.material.bottomnavigation.BottomNavigationMenu")
+//        val declaredField = forName.getDeclaredField("MAX_ITEM_COUNT")
+//        declaredField.isAccessible=true
+//        declaredField.set(menuSys,10)
+
+
+
 
         //这里可以抽取个方法 如  navigation.childCount 得到底部有几个菜单栏 再进行遍历
         val menuView = bottom_navigation.getChildAt(0) as BottomNavigationMenuView
@@ -44,25 +60,26 @@ class MainActivity : AppCompatActivity() {
 
 // BottomNavigationView 切换监听
         bottom_navigation.setOnNavigationItemSelectedListener {
+            var value: Fragment? = null
+            var tag=""
             when (it.itemId) {
                 R.id.page_1 -> {
-                    val value = fragmet1.value
-                    switchContent(mCurrFragment, value, R.string.text_label_1.toString())
-                    mCurrFragment = value
-                    return@setOnNavigationItemSelectedListener true
+                    value = fragmet1.value
+                    tag=R.string.text_label_1.toString()
                 }
                 R.id.page_2 -> {
-                    val value = fragmet2.value
-                    switchContent(mCurrFragment, value, R.string.text_label_2.toString())
-                    mCurrFragment = value
-                    return@setOnNavigationItemSelectedListener true
+                    value = fragmet2.value
+                    tag=R.string.text_label_1.toString()
                 }
                 R.id.page_3 -> {
-                    val value = fragmet3.value
-                    switchContent(mCurrFragment, value, R.string.text_label_3.toString())
-                    mCurrFragment = value
-                    return@setOnNavigationItemSelectedListener true
+                    value = fragmet3.value
+                    tag=R.string.text_label_1.toString()
                 }
+            }
+            if (value != null&&value!=mCurrFragment) {
+                switchContent(mCurrFragment, value, tag)
+                mCurrFragment = value
+                return@setOnNavigationItemSelectedListener true
             }
 
             false
