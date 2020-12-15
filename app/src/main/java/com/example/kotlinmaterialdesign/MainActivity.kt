@@ -26,21 +26,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
-        //绕过md 限制5个菜单兰的限制 （未成功）
-//        val menuField =  Class.forName("com.google.android.material.bottomnavigation.BottomNavigationView").getDeclaredField("menu")
-//        menuField.isAccessible=true
-//        val menuSys = menuField.get(bottom_navigation)
-//
-//        val forName =
-//            Class.forName("com.google.android.material.bottomnavigation.BottomNavigationMenu")
-//        val declaredField = forName.getDeclaredField("MAX_ITEM_COUNT")
-//        declaredField.isAccessible=true
-//        declaredField.set(menuSys,10)
 
-
-
-
-        //这里可以抽取个方法 如  navigation.childCount 得到底部有几个菜单栏 再进行遍历
+        //这里可以抽取个方法 如  bottom_navigation.childCount 得到底部有几个菜单栏 再进行遍历
         val menuView = bottom_navigation.getChildAt(0) as BottomNavigationMenuView
         val itemPage1 = menuView.findViewById<BottomNavigationItemView>(R.id.page_1)
         val badge: View = LayoutInflater.from(this).inflate(R.layout.im_badge, menuView, false)
@@ -50,7 +37,6 @@ class MainActivity : AppCompatActivity() {
         //md 版本1.2.1 长按下面的菜单兰 会出现吐司  这里拦截长按监听
         itemPage1.setOnLongClickListener { true }
         //如果没有提示就把textview 隐藏了
-
 //      textView1.visibility = View.GONE
 
         mCurrFragment = fragmet1.value
