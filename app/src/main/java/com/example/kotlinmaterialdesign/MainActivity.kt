@@ -1,9 +1,11 @@
 package com.example.kotlinmaterialdesign
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.example.kotlinmaterialdesign.fragment.Page1Fragment
@@ -43,8 +45,22 @@ class MainActivity : AppCompatActivity() {
 
         supportFragmentManager.beginTransaction()
             .replace(R.id.frame_content, mCurrFragment, R.string.text_label_1.toString()).commit()
+        onclick()
 
-// BottomNavigationView 切换监听
+
+
+    }
+
+    private fun onclick() {
+        //抽屉
+        toolBar.setNavigationOnClickListener {
+            drawerLayout.visibility=View.VISIBLE
+            drawerLayout.closeDrawers()
+        }
+
+
+
+        // BottomNavigationView 切换监听
         bottom_navigation.setOnNavigationItemSelectedListener {
             var value: Fragment? = null
             var tag=""
@@ -70,7 +86,6 @@ class MainActivity : AppCompatActivity() {
 
             false
         }
-
     }
 
 
