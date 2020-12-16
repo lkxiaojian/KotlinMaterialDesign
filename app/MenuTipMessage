@@ -1,0 +1,102 @@
+
+一 menu 说明
+    <?xml version="1.0" encoding="utf-8"?>
+    <menu xmlns:android="http://schemas.android.com/apk/res/android">
+        <item android:id="@[+][package:]id/resource_name"
+              android:title="string"
+              android:titleCondensed="string"
+              android:icon="@[package:]drawable/drawable_resource_name"
+              android:onClick="method name"
+              android:showAsAction=["ifRoom" | "never" | "withText" | "always" | "collapseActionView"]
+              android:actionLayout="@[package:]layout/layout_resource_name"
+              android:actionViewClass="class name"
+              android:actionProviderClass="class name"
+              android:alphabeticShortcut="string"
+              android:alphabeticModifiers=["META" | "CTRL" | "ALT" | "SHIFT" | "SYM" | "FUNCTION"]
+              android:numericShortcut="string"
+              android:numericModifiers=["META" | "CTRL" | "ALT" | "SHIFT" | "SYM" | "FUNCTION"]
+              android:checkable=["true" | "false"]
+              android:visible=["true" | "false"]
+              android:enabled=["true" | "false"]
+              android:menuCategory=["container" | "system" | "secondary" | "alternative"]
+              android:orderInCategory="integer" />
+        <group android:id="@[+][package:]id/resource name"
+               android:checkableBehavior=["none" | "all" | "single"]
+               android:visible=["true" | "false"]
+               android:enabled=["true" | "false"]
+               android:menuCategory=["container" | "system" | "secondary" | "alternative"]
+               android:orderInCategory="integer" >
+            <item />
+        </group>
+        <item >
+            <menu>
+              <item />
+            </menu>
+        </item>
+    </menu>
+
+item
+    android:id
+    资源 ID。唯一资源 ID。要为此项创建新的资源 ID，请使用以下形式："@+id/name"。加号表示应将其创建为新 ID。
+    android:title
+    字符串资源。字符串资源或原始字符串形式的菜单标题。
+    android:titleCondensed
+    字符串资源。字符串资源或原始字符串形式的压缩标题。此标题在正常标题过长的情况下使用。
+    android:icon
+    可绘制资源。用作菜单项图标的图片。
+    android:onClick
+    方法名称。点击此菜单项时调用的方法。此方法必须在 Activity 中声明为公共方法，并接受 MenuItem 作为其唯一参数，该参数指示所点击的项。此方法优先于对 onOptionsItemSelected() 的标准回调。
+    （如果您使用 ProGuard（或类似工具）混淆代码，切记不要重命名在此属性中指定的方法，因为这样会破坏功能。）
+    android:showAsAction 有ifRoom withText never always collapseActionView
+
+    ifRoom	只有在应用栏中有空间的情况下，才将此项放置其中。如果没有足够的空间来容纳标记为 "ifRoom" 的所有项，则 orderInCategory 值最低的项会显示为操作，其余项将显示在溢出菜单中。
+    withText	此外，还会随操作项添加标题文本（由 android:title 定义）。您可以将此值与某个其他值一起作为标记集添加，用竖线 | 分隔。
+    never	不得将此项放在应用栏中，而应将其列在应用栏的溢出菜单中。
+    always	始终将此项放在应用栏中。除非此项必须始终显示在操作栏中，否则请勿使用该值。将多个项设置为始终显示为操作项，会导致它们与应用栏中的其他界面重叠。
+    collapseActionView	与此操作项相关联的操作视图（由 android:actionLayout 或 android:actionViewClass 声明）是可收起的。
+
+
+android:checkable
+布尔值。如果该项可勾选，则为“true”。
+android:checked
+布尔值。如果默认情况下该项为勾选状态，则为“true”。
+android:visible
+布尔值。如果默认情况下该项可见，则为“true”。
+android:enabled
+布尔值。如果默认情况下该项为启用状态，则为“true”。
+
+android:menuCategory
+关键字。对应于 Menu CATEGORY_* 常量的值，这些常量用于定义项的优先级。有效值：
+值	说明
+container	这类项归属于容器。
+system	这类项由系统提供。
+secondary	这类项是用户提供的次要（不常用）选项。
+alternative	这类项是对当前显示的数据的替代操作。
+
+android:orderInCategory
+整数。项在组内的“重要性”顺序。
+
+
+group
+
+android:id
+资源 ID。唯一资源 ID。要为此项创建新的资源 ID，请使用以下形式："@+id/name"。加号表示应将其创建为新 ID。
+android:checkableBehavior
+关键字。组的可勾选行为类型。有效值：
+值	说明
+none	不可勾选
+all	可以勾选所有项（使用复选框）
+single		只能勾选一项（使用单选按钮）
+
+android:enabled
+布尔值。如果组为启用状态，则为“true”。
+android:menuCategory
+关键字。对应于 Menu CATEGORY_* 常量的值，这些常量用于定义组的优先级。有效值：
+值	说明
+container	这类组归属于容器。
+system	这类组由系统提供。
+secondary	这类组是用户提供的次要（不常用）选项。
+alternative	这类组是对当前显示的数据的替代操作。
+
+android:orderInCategory
+整数。项在类别中的默认顺序。

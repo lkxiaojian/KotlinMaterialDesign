@@ -1,10 +1,10 @@
 package com.example.kotlinmaterialdesign
 
+
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.example.kotlinmaterialdesign.fragment.Page1Fragment
@@ -15,11 +15,15 @@ import com.google.android.material.bottomnavigation.BottomNavigationMenuView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.im_badge.*
 
+/**
+ *  menu 说明查看 MenuTipMessage 文件
+ */
 class MainActivity : AppCompatActivity() {
     private val fragmet1 = lazy { Page1Fragment() }
     private val fragmet2 = lazy { Page2Fragment() }
     private val fragmet3 = lazy { Page3Fragment() }
     private lateinit var mCurrFragment: Fragment
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,7 +56,7 @@ class MainActivity : AppCompatActivity() {
         toolBar.setNavigationOnClickListener {
             drawerLayout.openDrawer(Gravity.LEFT)
         }
-           //toolBar 菜单的item 点击监听
+        //toolBar 菜单的item 点击监听
         toolBar.setOnMenuItemClickListener {
             Toast.makeText(this, it.title, Toast.LENGTH_SHORT).show()
             true
@@ -91,7 +95,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
+    /**
+     * Switch content
+     * 切换fragment
+     * @param from 当前fragment
+     * @param to 切换到哪个fragment
+     * @param tag 标识(zhì)
+     */
     private fun switchContent(from: Fragment?, to: Fragment?, tag: String?) {
         if (from == null || to == null) {
             return
