@@ -1,21 +1,17 @@
 package com.example.kotlinmaterialdesign
 
 import android.os.Bundle
-import android.util.Log
-import android.view.Gravity
-import android.view.LayoutInflater
-import android.view.View
+import android.view.*
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.example.kotlinmaterialdesign.fragment.Page1Fragment
 import com.example.kotlinmaterialdesign.fragment.Page2Fragment
 import com.example.kotlinmaterialdesign.fragment.Page3Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationItemView
-import com.google.android.material.bottomnavigation.BottomNavigationMenu
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.im_badge.*
 
@@ -49,38 +45,43 @@ class MainActivity : AppCompatActivity() {
         onclick()
 
 
-
     }
 
     private fun onclick() {
         //抽屉
         toolBar.setNavigationOnClickListener {
-//            drawerLayout.visibility=View.VISIBLE
             drawerLayout.openDrawer(Gravity.LEFT)
-            val shown = navigationView.isShown
+        }
+           //toolBar 菜单的item 点击监听
+        toolBar.setOnMenuItemClickListener {
+            Toast.makeText(this, it.title, Toast.LENGTH_SHORT).show()
+            true
         }
 
 
-
+        navigationView.setNavigationItemSelectedListener {
+            Toast.makeText(this, it.title, Toast.LENGTH_SHORT).show()
+            true
+        }
         // BottomNavigationView 切换监听
         bottom_navigation.setOnNavigationItemSelectedListener {
             var value: Fragment? = null
-            var tag=""
+            var tag = ""
             when (it.itemId) {
                 R.id.page_1 -> {
                     value = fragmet1.value
-                    tag=R.string.text_label_1.toString()
+                    tag = R.string.text_label_1.toString()
                 }
                 R.id.page_2 -> {
                     value = fragmet2.value
-                    tag=R.string.text_label_1.toString()
+                    tag = R.string.text_label_1.toString()
                 }
                 R.id.page_3 -> {
                     value = fragmet3.value
-                    tag=R.string.text_label_1.toString()
+                    tag = R.string.text_label_1.toString()
                 }
             }
-            if (value != null&&value!=mCurrFragment) {
+            if (value != null && value != mCurrFragment) {
                 switchContent(mCurrFragment, value, tag)
                 mCurrFragment = value
                 return@setOnNavigationItemSelectedListener true
@@ -102,4 +103,6 @@ class MainActivity : AppCompatActivity() {
             transaction.hide(from).show(to).commit()
         }
     }
+
+
 }

@@ -4,4 +4,17 @@
     <string name="text_label_2">text_label_2</string>
     <string name="text_label_3">text_label_3</string>
     <string name="Toolbar">Toolbar</string>
+
+    <string name="toolbar_1">toolbar_1</string>
+    <string name="toolbar_2">toolbar_2</string>
+    <string name="toolbar_3">toolbar_3</string>
+    <string name="header_layout">I am header_layout</string>
+
+    <string name="home">Home</string>
+    <string name="message">Message</string>
+    <string name="friends">Friends</string>
+    <string name="disuccion">Disuccion</string>
+    <string name="sub_item">Sub items</string>
+    <string name="sub_item_1">Sub item 1</string>
+    <string name="sub_item_2">Sub item 2</string>
 </resources>
