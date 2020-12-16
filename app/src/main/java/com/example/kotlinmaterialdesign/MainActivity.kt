@@ -2,6 +2,7 @@ package com.example.kotlinmaterialdesign
 
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -54,8 +55,9 @@ class MainActivity : AppCompatActivity() {
     private fun onclick() {
         //抽屉
         toolBar.setNavigationOnClickListener {
-            drawerLayout.visibility=View.VISIBLE
-            drawerLayout.closeDrawers()
+//            drawerLayout.visibility=View.VISIBLE
+            drawerLayout.openDrawer(Gravity.LEFT)
+            val shown = navigationView.isShown
         }
 
 
