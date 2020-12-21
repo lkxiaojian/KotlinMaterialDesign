@@ -1,6 +1,7 @@
 package com.example.kotlinmaterialdesign
 
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
@@ -51,6 +52,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    @SuppressLint("RtlHardcoded")
     private fun onclick() {
         //抽屉
         toolBar.setNavigationOnClickListener {
