@@ -52,11 +52,11 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    @SuppressLint("RtlHardcoded")
+    @SuppressLint("WrongConstant")
     private fun onclick() {
         //抽屉
         toolBar.setNavigationOnClickListener {
-            drawerLayout.openDrawer(Gravity.LEFT)
+            drawerLayout.openDrawer(Gravity.START)
         }
         //toolBar 菜单的item 点击监听
         toolBar.setOnMenuItemClickListener {
