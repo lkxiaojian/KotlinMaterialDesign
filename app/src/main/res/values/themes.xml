@@ -14,9 +14,14 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="full" parent="Theme.KotlinMaterialDesign">
+      <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
 
 
     <style name="Theme.Toolbar" parent="ThemeOverlay.AppCompat.ActionBar" />
+
     <!--Toolbar 副标题的字体和颜色-->
     <style name="Theme.Toolbar.SubTitle">
         <item name="android:textSize">12sp</item>

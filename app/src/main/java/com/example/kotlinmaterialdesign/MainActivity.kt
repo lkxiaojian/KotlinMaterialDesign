@@ -2,12 +2,17 @@ package com.example.kotlinmaterialdesign
 
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
-import android.view.*
+import android.util.TypedValue
+import android.view.Gravity
+import android.view.LayoutInflater
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import com.example.kotlinmaterialdesign.activity.Page2Activity
 import com.example.kotlinmaterialdesign.fragment.Page1Fragment
 import com.example.kotlinmaterialdesign.fragment.Page2Fragment
 import com.example.kotlinmaterialdesign.fragment.Page3Fragment
@@ -15,6 +20,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationItemView
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.im_badge.*
+
 
 /**
  *  menu 说明查看 MenuTipMessage 文件
@@ -24,6 +30,7 @@ class MainActivity : AppCompatActivity() {
     private val fragmet2 = lazy { Page2Fragment() }
     private val fragmet3 = lazy { Page3Fragment() }
     private lateinit var mCurrFragment: Fragment
+    private var height=0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,6 +54,10 @@ class MainActivity : AppCompatActivity() {
 
         supportFragmentManager.beginTransaction()
             .replace(R.id.frame_content, mCurrFragment, R.string.text_label_1.toString()).commit()
+
+        val typedValue = TypedValue()
+        theme.resolveAttribute(R.attr.actionBarSize, typedValue, true)
+        height = typedValue.data
         onclick()
 
 
@@ -79,8 +90,8 @@ class MainActivity : AppCompatActivity() {
                     tag = R.string.text_label_1.toString()
                 }
                 R.id.page_2 -> {
-                    value = fragmet2.value
-                    tag = R.string.text_label_1.toString()
+                    startActivity(Intent(this,Page2Activity::class.java))
+                   return@setOnNavigationItemSelectedListener false
                 }
                 R.id.page_3 -> {
                     value = fragmet3.value
