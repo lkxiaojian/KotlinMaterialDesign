@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.example.kotlinmaterialdesign.activity.Page2Activity
@@ -74,6 +75,7 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, it.title, Toast.LENGTH_SHORT).show()
             true
         }
+
 
 
         navigationView.setNavigationItemSelectedListener {
